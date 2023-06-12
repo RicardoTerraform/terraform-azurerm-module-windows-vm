@@ -72,10 +72,10 @@ resource "azurerm_windows_virtual_machine" "azurevm" {
     }
   }
 
-  user_data = "${data.template_cloudinit_config.config.rendered}"
+  #user_data = "${data.template_cloudinit_config.config.rendered}"
 
   tags       = merge(var.vm_tags, local.tags_default)
-  depends_on = [azurerm_network_interface.vm_nic, module.newrg]
+  depends_on = [azurerm_network_interface.vm_nic]
 }
 
 
@@ -151,7 +151,6 @@ resource "azurerm_virtual_machine" "azurevmold" {
   # }
   tags = merge(var.vm_tags, local.tags_default)
 
-  depends_on = [module.newrg]
 }
 
 
@@ -181,7 +180,6 @@ SETTINGS
 }
 SETTINGS
 
-  depends_on = [module.newrg]
 }
 
 

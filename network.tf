@@ -13,7 +13,6 @@ resource "azurerm_network_interface" "vm_nic" {
     private_ip_address_version    = var.vm_private_ip_address_version
   }
   tags       = merge(var.vm_tags, local.tags_default)
-  depends_on = [module.newrg]
 }
 
 resource "azurerm_public_ip" "vm_public_ip" {
@@ -26,7 +25,6 @@ resource "azurerm_public_ip" "vm_public_ip" {
 
   sku        = var.vm_public_ip_sku
   zones      = var.vm_public_ip_zones
-  depends_on = [module.newrg]
 
   tags = merge(var.vm_tags, local.tags_default)
 }
@@ -45,7 +43,6 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = "${var.azure_system_name}-rg-${var.vm_environment}"
 
   tags       = merge(var.vm_tags, local.tags_default)
-  depends_on = [module.newrg]
 }
 
 resource "azurerm_network_interface_security_group_association" "nsg" {

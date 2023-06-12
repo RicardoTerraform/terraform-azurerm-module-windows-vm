@@ -13,8 +13,8 @@ locals {
   nsg_default = concat(
     var.nsg_internet ? local.internet_rules : [],
     local.rdp_rules,
-    var.vm_subnet == "private" ? local.private_asg : [],
-    var.vm_subnet == "public" ? local.public_asg : []
+    #var.vm_subnet == "private" ? local.private_asg : [],
+    #var.vm_subnet == "public" ? local.public_asg : []
   )
 
 #var.vm_subnet == "private" ? local.private_asg : local.public_asg
