@@ -53,10 +53,36 @@ locals {
     protocol                              = "*"
     source_port_range                     = "*"
     destination_port_range                = "*"
+    source_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id]
+    destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id]
+    },
+    {
+    name                                  = "ricardo-allow-asg-public"
+    description                           = "vm can access asg public"
+    priority                              = 4095
+    direction                             = "Outbound"
+    access                                = "Allow"
+    protocol                              = "*"
+    source_port_range                     = "*"
+    destination_port_range                = "*"
     source_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
-    }]
+    destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
+    }
+    ]
 
   private_asg = [{
+    name                                       = "ricardo-allow-asg-private"
+    description                                = "vm can access asg private"
+    priority                                   = 4095
+    direction                                  = "Inbound"
+    access                                     = "Allow"
+    protocol                                   = "*"
+    source_port_range                          = "*"
+    destination_port_range                     = "*"
+    source_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
+    destination_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
+    },
+    {
     name                                       = "ricardo-allow-asg-private"
     description                                = "vm can access asg private"
     priority                                   = 4095
@@ -65,8 +91,11 @@ locals {
     protocol                                   = "*"
     source_port_range                          = "*"
     destination_port_range                     = "*"
-    destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
-    }]
+    source_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
+    destination_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
+    }
+    ]
+    
 
 
   # base_rules = [
