@@ -7,7 +7,8 @@ locals {
   domain       = "ricardocloud.pt"
   join_ad_user = "admin@ricardocloud.pt"
 
-  ad_dns_server = ["10.2.1.4", "10.2.1.5"]
+#dns do ad join quando configurado
+  ad_dns_server = []
 
 
   nsg_default = concat(
