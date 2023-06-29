@@ -38,12 +38,46 @@ No Modules
 
 
 # Inputs
-| Name                 | Description                                  |  type         Default                                                    |  Required
+| Name                 | Description                                  |  type          | Default                                                    |  Required  |
 | -------------------- | -------------------------------------------- | -------------- | ---------------------------------------------------------  | ---------- |
 | azure_system_name    | The system name, e.g catalog                 | string         | n/a                                                        | yes        |
-| azure_location       | Location of the resources                    | string         | "westeurope"                                               | no         |
-| azure_environment    | Environment tag, e.g prd                     | string         | "dev"                                                      | no         |
+| vm_name              | This defines the name of the VM              | string         | n/a                                                        | yes        |
+| vm_environment       | Environment tag, e.g prd                     | string         | n/a                                                        | yes        |
+| vm_location          | This defines the location of the resource    | string         | "westeurope"                                               | no         |
+| vm_old_creation      | "This is needed since there are some features in the old resource azurerm_virtual_machine(true) that are not present in the new resource azurerm_windows_virtual_machine(false)" | bool   | false | no         |
+| vm_tags              | Tags to put on resources                     | map(any)       | {}                                                         | no         |
 | azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+| azure_users          | User list with access to the resource group. | list(string)   | "RicardoAlves1494@RicardoAlves1494hotmail.onmicrosoft.com" | no         |
+
+
+
+
+
+
+
+
+
 
 # Outputs
 | Name                        | Description   |
