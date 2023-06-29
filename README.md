@@ -15,7 +15,7 @@ No Modules
 | Name                                            | type               |
 | ----------------------------------------------- | ------------------ |
 | azurerm_network_interface.vm_nic                      | resource           |
-| azurerm_network_interface_application_security_group_association.asg  | resource           |
+| azurerm_network_interface_application_security_group_association.asg  | resource |
 | azurerm_network_interface_security_group_association.nsg | resource           |
 | azurerm_network_security_group.nsg     | resource           |
 | azurerm_network_security_rule.nsgrules| resource        |
@@ -33,8 +33,6 @@ No Modules
 | azurerm_key_vault_secret.keyvaultsecret | data source |
 | azurerm_resource_group.rgname | data source |
 | azurerm_subnet.selected | data source |
-
-
 
 
 
