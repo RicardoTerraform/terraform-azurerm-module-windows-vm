@@ -195,7 +195,7 @@ variable "vm_admin_password" {
 variable "vm_join_ad" {
   type        = bool
   description = "Join this VM to the AD ?"
-  default     = true
+  default     = false
 }
 
 variable "vm_application_security_group_id" {
@@ -230,3 +230,9 @@ variable "nsg_customrules" {
   description = "Security rules for the network security group using this format name = [name, description, priority, direction, access, protocol, source_port_range, destination_port_range, source_address_prefix, destination_address_prefix]"
   default     = []
 }
+
+variable "vm_custom_script" {
+  type = bool
+  description = "Is there Any extra script to be run? if yes add the script in the folder 'scripts' "
+  default = false
+} 

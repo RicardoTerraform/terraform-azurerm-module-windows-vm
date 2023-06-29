@@ -24,7 +24,7 @@ No Modules
 | azurerm_windows_virtual_machine.azurevm | resouce |
 | azurerm_virtual_machine.azurevmold | resource |
 | azurerm_virtual_machine_extension.adjoin | resource |
-| azurerm_virtual_machine_extension.script | resource |
+| azurerm_virtual_machine_extension.customscript | resource |
 | random_password.password | resource |
 | azurerm_application_security_group.asgprivate | data source |
 | azurerm_application_security_group.asgpublic | data source |
@@ -50,10 +50,11 @@ No Modules
 | vm_admin_username | Username for Virtual Machine administrator account | string | Admin | no |
 | vm_application_security_group_id | ASG ID from an existing Application Security group | string | null | no |
 | vm_Avail_zone_id     | Index of the Availability Zone which the Virtual Machine should be allocated in | number    | null                         | no         |
+| vm_custom_script | Is there Any extra script to be run? if yes add the script in the folder 'scripts'  | bool | false | no |
 | vm_image             | "Virtual Machine source image information. See https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#storage_image_reference. This variable cannot be used if `vm_image_id` is already defined." | map(string)   | <pre>object({<br> publisher = "MicrosoftWindowsServer"<br> offer     = "WindowsServer" <br> sku       = "2019-Datacenter" <br> version   = "latest" <br>})</pre> | no         |
 | vm_image_id          | The ID of the Image which this Virtual Machine should be created from. This variable cannot be used if `vm_image` is already defined | string         | null  | no         |
 | vm_instance_type     | VM instance type                             | string         | "Standard_B2s"                                             | no         |
-| vm_join_ad | Join this VM to the AD ? | bool | true | no |
+| vm_join_ad | Join this VM to the AD ? | bool | false | no |
 | vm_location          | This defines the location of the resource    | string         | "westeurope"                                               | no         |
 | vm_managed_identity | Map with identity block informations as described here https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine#identity | <pre>object({<br> type         = string <br> identity_ids = list(string) <br>})</pre> | <pre>{<br> type = "SystemAssigned" <br> identity_ids = [] <br>}</pre> | no
 | vm_nic_enable_accelerated_networking | Should Accelerated Networking be enabled? Defaults to `false` | bool | false | no |

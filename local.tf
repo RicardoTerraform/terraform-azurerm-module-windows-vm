@@ -8,7 +8,7 @@ locals {
   join_ad_user = "admin@ricardocloud.pt"
 
 #dns do ad join quando configurado
-  ad_dns_server = []
+ad_dns_server = []
 
 
   nsg_default = concat(

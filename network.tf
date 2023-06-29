@@ -3,7 +3,7 @@ resource "azurerm_network_interface" "vm_nic" {
   location                      = var.vm_location
   resource_group_name           = data.azurerm_resource_group.rgname.name
   enable_accelerated_networking = var.vm_nic_enable_accelerated_networking
-  dns_servers                   = local.ad_dns_server
+  dns_servers                   = var.vm_join_ad ? local.ad_dns_server : []
   ip_configuration {
     name                          = "${var.azure_system_name}-${var.vm_name}-nic-ipconfig-${var.vm_environment}"
     subnet_id                     = var.vm_subnet_id == null ? data.azurerm_subnet.selected.id : var.vm_subnet_id

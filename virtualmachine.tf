@@ -137,9 +137,6 @@ resource "azurerm_virtual_machine" "azurevmold" {
   }
   ###############################################
 
-
-
-
   # os_profile {
   #   computer_name  = "hostname"
   #   admin_username = "testadmin"
@@ -183,22 +180,23 @@ SETTINGS
 }
 
 
+resource "azurerm_virtual_machine_extension" "customscript" {
+  count = var.vm_custom_script ? 1 : 0
 
-# resource "azurerm_virtual_machine_extension" "script" {
-#   name                 = "script"
-#   virtual_machine_id   = local.ids
-#   publisher            = "Microsoft.Compute"
-#   type                 = "CustomScriptExtension"
-#   type_handler_version = "2.0"
-#   auto_upgrade_minor_version = true
+  name                 = "script"
+  virtual_machine_id   = local.ids
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "2.0"
+  auto_upgrade_minor_version = true
 
-#   settings = <<SETTINGS
-#  {
-#    "commandToExecute": "powershell -command -File ${path.module}/scripts/test.sh"
-#  }
-# SETTINGS
+  settings = <<SETTINGS
+ {
+   "commandToExecute": "powershell -command -File ${path.module}/scripts/test.sh"
+ }
+SETTINGS
 
-# }
+}
 
 #"commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File start.ps1"
 
