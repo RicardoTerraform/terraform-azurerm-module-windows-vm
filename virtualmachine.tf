@@ -65,10 +65,10 @@ resource "azurerm_windows_virtual_machine" "azurevm" {
 
   #Managed identity turn on - VM can access storage account/secrets/password - we do not need to expose secrets
   dynamic "identity" {
-    for_each = var.managed_identity != null ? ["true"] : []
+    for_each = var.vm_managed_identity != null ? ["true"] : []
     content {
-      type         = var.managed_identity.type
-      identity_ids = var.managed_identity.identity_ids
+      type         = var.vm_managed_identity.type
+      identity_ids = var.vm_managed_identity.identity_ids
     }
   }
 
@@ -105,10 +105,10 @@ resource "azurerm_virtual_machine" "azurevmold" {
   }
 
   dynamic "identity" {
-    for_each = var.managed_identity != null ? ["true"] : []
+    for_each = var.vm_managed_identity != null ? ["true"] : []
     content {
-      type         = var.managed_identity.type
-      identity_ids = var.managed_identity.identity_ids
+      type         = var.vm_managed_identity.type
+      identity_ids = var.vm_managed_identity.identity_ids
     }
   }
 

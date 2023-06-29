@@ -10,7 +10,6 @@ variable "azure_system_name" {
 variable "vm_environment" {
   type        = string
   description = "This defines the environment of the resource. two options: dev | prd"
-  default     = "dev"
 }
 
 variable "vm_location" {
@@ -32,8 +31,9 @@ variable "vm_old_creation" {
 }
 
 variable "vm_instance_type" {
-  default     = "Standard_B2s"
+  type = string
   description = "VM instance type."
+  default     = "Standard_B2s"
 }
 
 variable "vm_image_id" {
@@ -88,8 +88,6 @@ variable "vm_public_ip_created" {
   type        = bool
   description = "Is a Pulic IP  to be created? Public IP is False if not set"
   default     = false
-
-
 }
 
 variable "vm_public_ip_sku" {
@@ -122,7 +120,7 @@ variable "boot_diagnostics_storage_account_uri" {
   default     = null
 }
 
-variable "managed_identity" {
+variable "vm_managed_identity" {
   type = object({
     type         = string
     identity_ids = list(string)
@@ -185,7 +183,7 @@ variable "vm_patch_mode" {
 variable "vm_admin_username" {
   type        = string
   description = "Username for Virtual Machine administrator account"
-  default     = "ricardo"
+  default     = "Admin"
 }
 
 variable "vm_admin_password" {
