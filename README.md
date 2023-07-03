@@ -49,7 +49,7 @@ No Modules
 | nsg_customrules | Security rules for the network security group using this format name = [name, description, priority, direction, access, protocol, source_port_range, destination_port_range, source_address_prefix, destination_address_prefix] | <pre>list(object({<br> name  = string<br> description = string <br> priority = number <br> direction  = string <br> access = string <br> protocol = string <br> source_port_range = string <br> source_port_ranges = list(string) <br> destination_port_range = string <br> destination_port_ranges = list(string) <br> source_address_prefix = string <br> source_address_prefixes = list(string) <br> destination_address_prefix = string <br> destination_address_prefixes = list(string) <br>})</pre> | [] | no |
 | nsg_internet | Allow Internet connection inside the instance? | bool | true | no |
 | vm_admin_password | Password for the administrator account of the virtual machine | string | null | no |
-| vm_admin_username | Username for Virtual Machine administrator account | string | Admin | no |
+| vm_admin_username | Username for Virtual Machine administrator account | string | cloud-admin | no |
 | vm_application_security_group_id | ASG ID from an existing Application Security group | string | null | no |
 | vm_Avail_zone_id     | Index of the Availability Zone which the Virtual Machine should be allocated in | number    | null                         | no         |
 | vm_custom_data | Is there Any extra script to be ran? if yes, upload the script to the repository  | bool | false | no |

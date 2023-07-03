@@ -240,5 +240,5 @@ variable "vm_custom_data" {
 variable "vm_custom_data_script" {
   type        = list(string)
   description = "what´s the script name? ex: 'createfolder.ps1', upload the script to the repository | This variable cannot be used if `vm_custom_script` is 'false'."
-  default     = ["createfolder1.ps1", "test.sh"]
+  default     = []
 }
