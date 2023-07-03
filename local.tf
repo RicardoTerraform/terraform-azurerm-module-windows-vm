@@ -45,7 +45,7 @@ locals {
   }]
 
   public_asg = [{
-    name                                       = "ricardo-allow-asg-public"
+    name                                       = "ricardo-allow-Inbound-asg-public"
     description                                = "vm can access asg public"
     priority                                   = 4095
     direction                                  = "Inbound"
@@ -57,7 +57,7 @@ locals {
     destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id]
     },
     {
-      name                                       = "ricardo-allow-asg-public"
+      name                                       = "ricardo-allow-Outbound-asg-public"
       description                                = "vm can access asg public"
       priority                                   = 4095
       direction                                  = "Outbound"
@@ -71,7 +71,7 @@ locals {
   ]
 
   private_asg = [{
-    name                                       = "ricardo-allow-asg-private"
+    name                                       = "ricardo-allow-Inbound-asg-private"
     description                                = "vm can access asg private"
     priority                                   = 4095
     direction                                  = "Inbound"
@@ -83,7 +83,7 @@ locals {
     destination_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
     },
     {
-      name                                       = "ricardo-allow-asg-private"
+      name                                       = "ricardo-allow-Outbound-asg-private"
       description                                = "vm can access asg private"
       priority                                   = 4095
       direction                                  = "Outbound"
