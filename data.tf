@@ -9,7 +9,7 @@ data "azurerm_subnet" "selected" {
 }
 
 data "azurerm_key_vault" "keyvault" {
-  name                = "keyvaultadjoin"
+  name                = "keyvaultadjooiin"
   resource_group_name = "paas-rg-network-prd"
 }
 
