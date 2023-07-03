@@ -31,7 +31,7 @@ variable "vm_old_creation" {
 }
 
 variable "vm_instance_type" {
-  type = string
+  type        = string
   description = "VM instance type."
   default     = "Standard_B2s"
 }
@@ -232,13 +232,13 @@ variable "nsg_customrules" {
 }
 
 variable "vm_custom_script" {
-  type = bool
+  type        = bool
   description = "Is there Any extra script to be ran? if yes, upload the script to the repository"
-  default = false
+  default     = false
 }
 
 variable "vm_custom_data_script" {
-  type = list(string)
+  type        = list(string)
   description = "what´s the script name? ex: 'createfolder.ps1', upload the script to the repository | This variable cannot be used if `vm_custom_script` is 'false'."
-  default = ["createfolder1.ps1","test.sh"]
+  default     = ["createfolder1.ps1", "test.sh"]
 }

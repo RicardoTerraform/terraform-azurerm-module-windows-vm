@@ -7,9 +7,8 @@ locals {
   domain       = "ricardocloud.pt"
   join_ad_user = "admin@ricardocloud.pt"
 
-#dns do ad join quando configurado
-ad_dns_server = []
-
+  #dns do ad join quando configurado
+  ad_dns_server = []
 
   nsg_default = concat(
     var.nsg_internet ? local.internet_rules : [],
@@ -18,7 +17,7 @@ ad_dns_server = []
     #var.vm_subnet == "public" ? local.public_asg : []
   )
 
-#var.vm_subnet == "private" ? local.private_asg : local.public_asg
+  #var.vm_subnet == "private" ? local.private_asg : local.public_asg
   internet_rules = [
     {
       name                       = "ricardo-allow-internet"
@@ -46,30 +45,30 @@ ad_dns_server = []
   }]
 
   public_asg = [{
-    name                                  = "ricardo-allow-asg-public"
-    description                           = "vm can access asg public"
-    priority                              = 4095
-    direction                             = "Inbound"
-    access                                = "Allow"
-    protocol                              = "*"
-    source_port_range                     = "*"
-    destination_port_range                = "*"
-    source_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id]
+    name                                       = "ricardo-allow-asg-public"
+    description                                = "vm can access asg public"
+    priority                                   = 4095
+    direction                                  = "Inbound"
+    access                                     = "Allow"
+    protocol                                   = "*"
+    source_port_range                          = "*"
+    destination_port_range                     = "*"
+    source_application_security_group_ids      = [data.azurerm_application_security_group.asgpublic.id]
     destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id]
     },
     {
-    name                                  = "ricardo-allow-asg-public"
-    description                           = "vm can access asg public"
-    priority                              = 4095
-    direction                             = "Outbound"
-    access                                = "Allow"
-    protocol                              = "*"
-    source_port_range                     = "*"
-    destination_port_range                = "*"
-    source_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
-    destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
+      name                                       = "ricardo-allow-asg-public"
+      description                                = "vm can access asg public"
+      priority                                   = 4095
+      direction                                  = "Outbound"
+      access                                     = "Allow"
+      protocol                                   = "*"
+      source_port_range                          = "*"
+      destination_port_range                     = "*"
+      source_application_security_group_ids      = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
+      destination_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
     }
-    ]
+  ]
 
   private_asg = [{
     name                                       = "ricardo-allow-asg-private"
@@ -80,23 +79,23 @@ ad_dns_server = []
     protocol                                   = "*"
     source_port_range                          = "*"
     destination_port_range                     = "*"
-    source_application_security_group_ids = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
+    source_application_security_group_ids      = [data.azurerm_application_security_group.asgpublic.id, data.azurerm_application_security_group.asgprivate.id]
     destination_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
     },
     {
-    name                                       = "ricardo-allow-asg-private"
-    description                                = "vm can access asg private"
-    priority                                   = 4095
-    direction                                  = "Outbound"
-    access                                     = "Allow"
-    protocol                                   = "*"
-    source_port_range                          = "*"
-    destination_port_range                     = "*"
-    source_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
-    destination_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
+      name                                       = "ricardo-allow-asg-private"
+      description                                = "vm can access asg private"
+      priority                                   = 4095
+      direction                                  = "Outbound"
+      access                                     = "Allow"
+      protocol                                   = "*"
+      source_port_range                          = "*"
+      destination_port_range                     = "*"
+      source_application_security_group_ids      = [data.azurerm_application_security_group.asgprivate.id]
+      destination_application_security_group_ids = [data.azurerm_application_security_group.asgprivate.id]
     }
-    ]
-    
+  ]
+
 
 
   # base_rules = [

@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "vm_nic" {
     public_ip_address_id          = var.vm_public_ip_created == false ? null : element(azurerm_public_ip.vm_public_ip[*].id, 0)
     private_ip_address_version    = var.vm_private_ip_address_version
   }
-  tags       = merge(var.vm_tags, local.tags_default)
+  tags = merge(var.vm_tags, local.tags_default)
 }
 
 resource "azurerm_public_ip" "vm_public_ip" {
@@ -23,8 +23,8 @@ resource "azurerm_public_ip" "vm_public_ip" {
   resource_group_name = data.azurerm_resource_group.rgname.name
   allocation_method   = "Static"
 
-  sku        = var.vm_public_ip_sku
-  zones      = var.vm_public_ip_zones
+  sku   = var.vm_public_ip_sku
+  zones = var.vm_public_ip_zones
 
   tags = merge(var.vm_tags, local.tags_default)
 }
@@ -35,14 +35,13 @@ resource "azurerm_network_interface_application_security_group_association" "asg
   application_security_group_id = var.vm_application_security_group_id == null ? data.azurerm_application_security_group.asgselected.id : var.vm_application_security_group_id
 }
 
-
 ### NSG
 resource "azurerm_network_security_group" "nsg" {
   name                = "${var.azure_system_name}-${var.vm_name}-nsg-${var.vm_environment}"
   location            = var.vm_location
   resource_group_name = "${var.azure_system_name}-rg-${var.vm_environment}"
 
-  tags       = merge(var.vm_tags, local.tags_default)
+  tags = merge(var.vm_tags, local.tags_default)
 }
 
 resource "azurerm_network_interface_security_group_association" "nsg" {
@@ -52,7 +51,6 @@ resource "azurerm_network_interface_security_group_association" "nsg" {
   depends_on = [azurerm_network_interface.vm_nic,
   azurerm_network_security_group.nsg]
 }
-
 
 resource "azurerm_network_security_rule" "nsgrules" {
   count = length(local.nsg_default)

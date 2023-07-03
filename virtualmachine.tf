@@ -143,7 +143,6 @@ resource "azurerm_virtual_machine" "azurevmold" {
 
 
 resource "azurerm_virtual_machine_extension" "adjoin" {
-
   count = var.vm_join_ad ? 1 : 0
 
   name                       = "VMADJOIN"
@@ -171,14 +170,13 @@ SETTINGS
 }
 
 resource "azurerm_virtual_machine_extension" "customscript" {
-  
-  count = var.vm_custom_data ? 1 : 0 
+  count = var.vm_custom_data ? 1 : 0
 
-  name                 = "script"
-  virtual_machine_id   = local.ids
-  publisher            = "Microsoft.Compute"
-  type                 = "CustomScriptExtension"
-  type_handler_version = "1.10"
+  name                       = "script"
+  virtual_machine_id         = local.ids
+  publisher                  = "Microsoft.Compute"
+  type                       = "CustomScriptExtension"
+  type_handler_version       = "1.10"
   auto_upgrade_minor_version = true
 
   settings = <<SETTINGS
