@@ -52,7 +52,7 @@ No Modules
 | vm_admin_username | Username for Virtual Machine administrator account | string | Admin | no |
 | vm_application_security_group_id | ASG ID from an existing Application Security group | string | null | no |
 | vm_Avail_zone_id     | Index of the Availability Zone which the Virtual Machine should be allocated in | number    | null                         | no         |
-| vm_custom_script | Is there Any extra script to be ran? if yes, upload the script to the repository  | bool | false | no |
+| vm_custom_data | Is there Any extra script to be ran? if yes, upload the script to the repository  | bool | false | no |
 | vm_custom_data_script | what´s the script name? ex: 'createfolder.ps1', upload the script to the repository / This variable cannot be used if 'vm_custom_script' is 'false'. | list(string) | [] | no
 | vm_image             | "Virtual Machine source image information. See https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#storage_image_reference. This variable cannot be used if `vm_image_id` is already defined." | map(string)   | <pre>object({<br> publisher = "MicrosoftWindowsServer"<br> offer     = "WindowsServer" <br> sku       = "2019-Datacenter" <br> version   = "latest" <br>})</pre> | no         |
 | vm_image_id          | The ID of the Image which this Virtual Machine should be created from. This variable cannot be used if `vm_image` is already defined | string         | null  | no         |

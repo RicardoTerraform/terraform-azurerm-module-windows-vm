@@ -231,7 +231,7 @@ variable "nsg_customrules" {
   default     = []
 }
 
-variable "vm_custom_script" {
+variable "vm_custom_data" {
   type        = bool
   description = "Is there Any extra script to be ran? if yes, upload the script to the repository"
   default     = false
