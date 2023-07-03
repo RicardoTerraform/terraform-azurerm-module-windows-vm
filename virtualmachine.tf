@@ -4,7 +4,6 @@ resource "random_password" "password" {
   override_special = "#$%*-_=+:"
 }
 
-
 resource "azurerm_windows_virtual_machine" "azurevm" {
   count = var.vm_old_creation ? 0 : 1
 
@@ -26,14 +25,6 @@ resource "azurerm_windows_virtual_machine" "azurevm" {
       sku       = var.vm_image["sku"]
       version   = var.vm_image["version"]
     }
-
-    #for_each = var.vm_image_id == null ? [var.vm_image] : []
-    # content {
-    #   publisher = source_image_reference.value["publisher"]
-    #   offer     = source_image_reference.value["offer"]
-    #   sku       = source_image_reference.value["sku"]
-    #   version   = source_image_reference.value["version"]
-    # }
   }
 
   #availability_set_is = 
@@ -72,14 +63,14 @@ resource "azurerm_windows_virtual_machine" "azurevm" {
     }
   }
 
-  #user_data = "${data.template_cloudinit_config.config.rendered}"
+  custom_data = var.vm_custom_data ? base64encode(join("\n", [
+    templatefile("${path.module}/scripts/createfolder.ps1", {}),
+    join("\n", [for script_name, rendered_script in data.template_file.script : rendered_script.rendered])
+  ])) : null
 
   tags       = merge(var.vm_tags, local.tags_default)
   depends_on = [azurerm_network_interface.vm_nic]
 }
-
-
-
 
 resource "azurerm_virtual_machine" "azurevmold" {
   count = var.vm_old_creation ? 1 : 0
@@ -179,25 +170,27 @@ SETTINGS
 
 }
 
-
 resource "azurerm_virtual_machine_extension" "customscript" {
-  count = var.vm_custom_script ? 1 : 0
+  
+  count = var.vm_custom_data ? 1 : 0 
 
   name                 = "script"
   virtual_machine_id   = local.ids
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
-  type_handler_version = "2.0"
+  type_handler_version = "1.10"
   auto_upgrade_minor_version = true
 
   settings = <<SETTINGS
  {
-   "commandToExecute": "powershell -command -File ${path.module}/scripts/test.sh"
- }
+  "fileUris": [],
+   "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -NoProfile -NonInteractive -command \"cp c:/azuredata/customdata.bin c:/azuredata/createfolder.ps1; c:/azuredata/createfolder.ps1\""
+    }
 SETTINGS
-
 }
 
-#"commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File start.ps1"
-
-#"script": "${filebase64("${path.module}/scripts/test.sh")}"
+#-----------------------------------------------------------
+# Also works using a Storage Account
+#"fileUris": ["https://storagestatetfprd01.blob.core.windows.net/scriptteste/createfolder.ps1"],
+# "commandToExecute": "powershell -ExecutionPolicy unrestricted -file createfolder.ps1"
+#-----------------------------------------------------------

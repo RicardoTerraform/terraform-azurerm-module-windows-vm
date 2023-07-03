@@ -7,6 +7,7 @@ No requirements
 | ------------- | ------------- |
 | azurerm       | n/a           |
 | random        | n/a           |
+| template      | n/a           |
 
 # Modules
 No Modules
@@ -33,6 +34,7 @@ No Modules
 | azurerm_key_vault_secret.keyvaultsecret | data source |
 | azurerm_resource_group.rgname | data source |
 | azurerm_subnet.selected | data source |
+| template_file.script | data souce |
 
 
 
@@ -50,7 +52,8 @@ No Modules
 | vm_admin_username | Username for Virtual Machine administrator account | string | Admin | no |
 | vm_application_security_group_id | ASG ID from an existing Application Security group | string | null | no |
 | vm_Avail_zone_id     | Index of the Availability Zone which the Virtual Machine should be allocated in | number    | null                         | no         |
-| vm_custom_script | Is there Any extra script to be run? if yes add the script in the folder 'scripts'  | bool | false | no |
+| vm_custom_script | Is there Any extra script to be ran? if yes, upload the script to the repository  | bool | false | no |
+| vm_custom_data_script | what´s the script name? ex: 'createfolder.ps1', upload the script to the repository | This variable cannot be used if 'vm_custom_script' is 'false'. | list(string) | [] | no
 | vm_image             | "Virtual Machine source image information. See https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#storage_image_reference. This variable cannot be used if `vm_image_id` is already defined." | map(string)   | <pre>object({<br> publisher = "MicrosoftWindowsServer"<br> offer     = "WindowsServer" <br> sku       = "2019-Datacenter" <br> version   = "latest" <br>})</pre> | no         |
 | vm_image_id          | The ID of the Image which this Virtual Machine should be created from. This variable cannot be used if `vm_image` is already defined | string         | null  | no         |
 | vm_instance_type     | VM instance type                             | string         | "Standard_B2s"                                             | no         |
@@ -81,19 +84,12 @@ No Modules
 
 
 
-
-
-
-
-
-
 # Outputs
-| Name                        | Description   |
-| --------------------------- | ------------- |
-| azure_resource_group_id     | n/a           |
-| azure_resource_group_name   | n/a           |
-| azure_asg_public_name       | n/a           |
-| azure_asg_public_id         | n/a           |
-| azure_asg_private_name      | n/a           |
-| azure_asg_private_id        | n/a           |
-| azure_users_UPN             | n/a           |
+| Name                           | Description   |
+| ------------------------------ | ------------- |
+| application_security_group_id  | n/a           |
+| azure_vm_id                    | n/a           |
+| azure_vm_rg                    | n/a           |
+| azure_vm_location              | n/a           |
+| azure_vm_name                  | n/a           |
+

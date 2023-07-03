@@ -233,6 +233,12 @@ variable "nsg_customrules" {
 
 variable "vm_custom_script" {
   type = bool
-  description = "Is there Any extra script to be run? if yes add the script in the folder 'scripts' "
+  description = "Is there Any extra script to be ran? if yes, upload the script to the repository"
   default = false
-} 
+}
+
+variable "vm_custom_data_script" {
+  type = list(string)
+  description = "what´s the script name? ex: 'createfolder.ps1', upload the script to the repository | This variable cannot be used if `vm_custom_script` is 'false'."
+  default = ["createfolder1.ps1","test.sh"]
+}
