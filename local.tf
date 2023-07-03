@@ -1,5 +1,5 @@
 locals {
-  environment_test = contains(["prd"], data.azurerm_resource_group.rgname.name)
+  #environment_test = contains(["prd"], data.azurerm_resource_group.rgname.name)
 
   # This is needed since there are some features in the old resource "azurerm_virtual_machine" that are not present in the new resource "azurerm_windows_virtual_machine"
   ids = var.vm_old_creation ? azurerm_virtual_machine.azurevmold[0].id : azurerm_windows_virtual_machine.azurevm[0].id
@@ -13,8 +13,8 @@ locals {
   nsg_default = concat(
     var.nsg_internet ? local.internet_rules : [],
     local.rdp_rules,
-    #var.vm_subnet == "private" ? local.private_asg : [],
-    #var.vm_subnet == "public" ? local.public_asg : []
+    var.vm_subnet == "private" ? local.private_asg : [],
+    var.vm_subnet == "public" ? local.public_asg : []
   )
 
   #var.vm_subnet == "private" ? local.private_asg : local.public_asg
