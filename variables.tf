@@ -183,7 +183,7 @@ variable "vm_patch_mode" {
 variable "vm_admin_username" {
   type        = string
   description = "Username for Virtual Machine administrator account"
-  default     = "admin"
+  default     = "cloud-admin"
 }
 
 variable "vm_admin_password" {
