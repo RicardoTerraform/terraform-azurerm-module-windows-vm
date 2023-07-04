@@ -27,6 +27,15 @@ resource "azurerm_windows_virtual_machine" "azurevm" {
     }
   }
 
+  dynamic "plan" {
+    for_each = var.vm_plan != null ? ["true"] : []
+    content {
+      name      = var.vm_plan["name"]
+      product   = var.vm_plan["product"]
+      publisher = var.vm_plan["publisher"]
+    }
+  }
+
   #availability_set_is = 
   zone = var.vm_Avail_zone_id
 

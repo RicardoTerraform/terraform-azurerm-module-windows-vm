@@ -67,6 +67,7 @@ No Modules
 | vm_os_disk_caching | Specifies the caching requirements for the OS Disk (None / ReadOnly / ReadWrite) | string | null | no |
 | vm_os_disk_storage_account_type | The Type of Storage Account which should back this the Internal OS Disk. Possible values are (`Standard_LRS` / `StandardSSD_LRS` / `Premium_LRS` / `StandardSSD_ZRS` / `Premium_ZRS`) | string | "Premium_ZRS" | no |
 | vm_patch_mode | Specifies the mode of in-guest patching to this Windows Virtual Machine. Possible values are Manual / AutomaticByOS / AutomaticByPlatform | string | "AutomaticByOS" | no |
+| vm_plan | Virtual Machine plan image information. you are deploying a virtual machine from a Marketplace image or a custom image originating from a Marketplace image | <pre>object({<br> name  = string <br> product   = string <br> publisher = string <br>})</pre>|null | no
 | vm_private_ip_address_version | The IP Version to use. Possible values are IPv4 or IPv6. Defaults to IPv4 | string | "IPv4" | no |
 |vm_private_ip_allocation| Private IP allocation. Private IP is dynamic if not set. Dynamic / Static | string   | null | no         |
 | vm_public_ip_created          | Is a Pulic IP  to be created? Public IP is False if not set | bool   | false | no         |

@@ -54,6 +54,16 @@ variable "vm_image" {
   }
 }
 
+variable "vm_plan" {
+  type = object({
+    name      = string
+    product   = string
+    publisher = string
+})
+  description = "Virtual Machine plan image information. you are deploying a virtual machine from a Marketplace image or a custom image originating from a Marketplace image."
+  default = null
+}
+
 variable "vm_Avail_zone_id" {
   type        = number
   description = "Index of the Availability Zone which the Virtual Machine should be allocated in."
@@ -98,8 +108,8 @@ variable "vm_public_ip_sku" {
 }
 
 variable "vm_public_ip_zones" {
-  description = "Zones for public IP attached to the VM. Can be `null` if no zone distpatch."
   type        = list(number)
+  description = "Zones for public IP attached to the VM. Can be `null` if no zone distpatch."
   default     = [1, 2, 3]
 }
 
