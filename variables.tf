@@ -43,6 +43,7 @@ variable "vm_image_id" {
   default     = null
 }
 
+#az vm image list
 variable "vm_image" {
   type        = map(string)
   description = "Virtual Machine source image information. See https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#storage_image_reference. This variable cannot be used if `vm_image_id` is already defined."
