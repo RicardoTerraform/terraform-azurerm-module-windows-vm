@@ -45,7 +45,7 @@ locals {
     source_address_prefix  = "*"
   }]
 
- #ASG Public can communicate with ASG Public and ASG Private
+  #ASG Public can communicate with ASG Public and ASG Private
   public_asg = [{
     name                                       = "ricardo-allow-Inbound-asg-public"
     description                                = "vm can access asg public"
@@ -72,7 +72,7 @@ locals {
     }
   ]
 
- #ASG Private can only communicate with ASG Private, Can not communicate with ASG Public
+  #ASG Private can only communicate with ASG Private, Can not communicate with ASG Public
   private_asg = [{
     name                                       = "ricardo-allow-Inbound-asg-private"
     description                                = "vm can access asg private"
@@ -134,7 +134,7 @@ locals {
     module_version = "v1.0"
   }
 
-disks_tiers = {
+  disks_tiers = {
 
     # HDD
     #             S4  S6  S10  S15  S20   S30  S40 	 S50    S60 	S70 	 S80

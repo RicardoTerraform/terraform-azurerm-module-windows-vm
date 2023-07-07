@@ -1,5 +1,5 @@
 variable "vm_name" {
-  type = string
+  type        = string
   description = "This defines the name of the VM"
 }
 
@@ -60,9 +60,9 @@ variable "vm_plan" {
     name      = string
     product   = string
     publisher = string
-})
+  })
   description = "Virtual Machine plan image information. you are deploying a virtual machine from a Marketplace image or a custom image originating from a Marketplace image."
-  default = null
+  default     = null
 }
 
 variable "vm_Avail_zone_id" {
